@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrix Rain - Password</title>
+    <title>Click Falling Letter</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Matrix effect (falling characters) -->
-    <div id="matrix"></div>
+    <!-- Access granted message -->
+    <div id="access-granted" class="access-granted-message">
+        ACCESS GRANTED. VENOM UNLEASHED. <br> CODE: QRT67H
+    </div>
 
     <!-- Password box -->
     <div class="password-box">
         <h2>Enter the Password:</h2>
-        <input type="password" id="passwordInput" placeholder="Password" autocomplete="off">
+        <input type="text" id="passwordInput" placeholder="Password" autocomplete="off" readonly>
     </div>
+
+    <!-- Falling letters container -->
+    <div id="falling-letters-container"></div>
 
     <script src="script.js"></script>
 </body>

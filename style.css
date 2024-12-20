@@ -1,42 +1,15 @@
 /* Basic page styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif; /* Keep the default font for body */
     background-color: black;
     color: green;
     margin: 0;
-    height: 100vh; /* Full viewport height */
-    display: flex; /* Use Flexbox to center content */
-    justify-content: center; /* Horizontally center content */
-    align-items: center; /* Vertically center content */
-    position: relative; /* Added for better positioning of the matrix effect */
-}
-
-/* Matrix effect */
-#matrix {
-    font-size: 30px;
-    color: green;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     height: 100vh;
-    pointer-events: none; /* Ensure matrix doesn't block interaction with the password box */
-    white-space: nowrap; /* Prevent the text from wrapping */
-}
-
-/* Each column in the matrix */
-.column {
-    display: inline-block;
-    position: absolute;
-    height: 100%;
-}
-
-/* Individual characters */
-.column span {
-    position: absolute;
-    color: #0f0;
-    font-family: monospace;
-    text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* Hide the scrollbar */
 }
 
 /* Password box styling */
@@ -45,9 +18,11 @@ body {
     border: 2px solid green;
     padding: 20px;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent background */
-    width: 300px; /* Set a fixed width for the password box */
-    z-index: 10; /* Make sure password box is above the matrix effect */
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 300px;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);  /* Subtle glow effect */
+    font-family: 'Courier New', Courier, monospace;  /* Monospace font for password box */
 }
 
 /* Password input styling */
@@ -59,4 +34,48 @@ body {
     background-color: black;
     color: green;
     margin-top: 10px;
+    font-family: 'Courier New', Courier, monospace;  /* Monospace font for the input field */
+}
+
+/* Falling letter styling */
+.falling-letter {
+    font-size: 40px;
+    color: green;
+    position: absolute;
+    top: 0;
+    user-select: none; /* Prevent text selection */
+    opacity: 0;  /* Start as invisible */
+    animation: fadeInOut 4s linear infinite;  /* Fade in/out animation */
+    text-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00, 0 0 15px #00FF00, 0 0 20px #00FF00; /* Green glow */
+}
+
+/* Keyframes for fade-in-out effect */
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Styling for the message displayed after correct password */
+.access-granted-message {
+    text-align: center;
+    color: green;
+    font-size: 24px; /* Slightly smaller font size for readability */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font for technical look */
+    font-weight: normal; /* Remove bold */
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 2px solid green;
+    border-radius: 10px;
+    background-color: black; /* Solid background color */
+    width: 600px; /* Increased width for better fit */
+    display: none;  /* Initially hidden */
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);  /* Stronger glowing effect */
+    position: absolute;
+    top: 20%; /* Move it higher by reducing this value */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20; /* Ensure it's above other elements */
+    white-space: normal; /* Allow text to break naturally */
+    line-height: 1.4; /* Adjust line height for better spacing */
 }
